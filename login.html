@@ -1,0 +1,195 @@
+
+<HTML>
+    <HEAD>
+    <TITLE>QUIZ GAME</TITLE>
+    </HEAD>
+    <BODY>
+        <main>
+           
+        <div class="game-quiz-container">
+ <div class="game-details-container">
+        <div class="form-box">
+        <div class="button-box">
+            <div id="btn"></div>
+            <button type="button" onClick="login()"class="toggle-btn">Log In</button>
+            <button type="button" onClick="register()"class="toggle-btn">Register</button> 
+        </div>
+        <div id="lo">
+            <input type="text" class="input-field" placeholder="E-mail" id="User" name=username required> 
+            <input class="input-field" type="PASSWORD" placeholder=" Mot de passe" id="pass" name=password required>
+            <input type="checkbox" class="check-box"><span>Enregistrer MDP</span> 
+            <button type="button" class="submit-btn" onClick="log()">connecter</button> 
+    </div>
+        <div id="reg">
+    <form role="form" onsubmit="signUp(event);">
+            <input type="text" class="input-field" name="fname" id="fname" placeholder="E-mail" required> 
+            <input type="password" class="input-field" name="pwd" id="pwd" placeholder="MDP" required>
+        <input type="checkbox" class="check-box"><span>I read and agree to terms and conditions</span>
+            <button type="submit" class="submit-btn">Sign Up</button>
+    </form>
+    </div>
+        </div>
+   
+ </div>
+        </div>
+    
+    </main>
+    </BODY>
+    <style>
+    *{
+    margin: 0;
+    padding: 0;
+    font-family: Serif;
+    box-sizing: border-box;
+}
+
+html, body{
+    height: 100%;
+    
+}
+main{
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    background: url('../js.png');
+    background-color : black;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+}
+.game-quiz-container{
+    width: 30rem;
+    height: 30rem;
+    background-color: rgb(181, 164, 184);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 30px;
+}
+.game-details-container{
+    width: 70%;
+    height: 4rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.form-box{
+	width: 380px;
+	height: 480px;
+	position: center;
+	margin: 6% auto;
+	background: rgb(181, 164, 184);
+	padding: 5px;
+	overflow: hidden;
+}
+/*Login Register button design*/
+.button-box{
+	width: 220px;
+	margin: 35px auto;
+	position: relative;
+	
+	border-radius: 30px;
+}
+.toggle-btn{
+	padding: 10px 30px;
+	cursor: pointer;
+	background: transparent;
+	border: 0;
+	outline: none;
+	position: relative;
+}
+#btn{
+	top: 0;
+	left: 0;
+	position: absolute;
+	width: 110px;
+	height: 100%;
+	background: rgb(100, 57, 96);
+	border-radius: 30px;
+	transition: .5s;
+}
+.input-group{
+	top: 180px;
+	position: absolute;
+	width: 280px;
+	transition: .5s;
+}
+.input-field{
+	width: 100%;
+	padding: 10px 0;
+	margin: 5px 0;
+	border-left: 0;
+	border-top: 0;
+	border-right: 0;
+	border-bottom: 1px solid rgb(61, 12, 50);
+	outline: none;
+	background: transparent;
+}
+.submit-btn{
+	width: 65%;
+	padding: 10px 30px;
+	cursor: pointer;
+	display: block;
+	margin: auto;
+	background: rgb(50, 50, 95);
+	border: 0;
+	outline: none;
+	border-radius: 30px;
+}
+.check-box{margin: 80px 1px 30px 3;}
+span{
+	color: rgb(128, 80, 124);
+	font-size: 12px;
+	bottom: 68px;
+	position: absolute;
+}
+#lo{left: 500px;
+    top: 220px;
+    position: absolute;}
+#reg{left: -500px;
+    top: 120px;
+	position: absolute;}
+    </style>
+     <SCRIPT>
+          const signUp = e => {
+            let formData = {
+                fname: document.getElementById('fname').value, 
+                pwd: document.getElementById('pwd').value
+            }
+            localStorage.setItem('formData', JSON.stringify(formData));
+             console.log(localStorage.getItem('formData'));
+            dispData();
+            e.preventDefault();
+        }
+        function log(){
+    var done=0;
+    let {fname,pwd} = JSON.parse(localStorage.getItem('formData'));
+     username=document.getElementById('User').value;
+     password=document.getElementById('pass').value;
+    if (username==fname && password==pwd) {
+    window.location="index.html";
+    }
+    } /* DOM */
+        var x =document.getElementById("lo");
+        var y =document.getElementById("reg");
+        var z =document.getElementById("btn");
+    function register(){
+            x.style.left="-1000px";
+            y.style.left="500px";
+            y.style.top="220px";
+            z.style.left="110px";
+        }
+    function login(){
+        x.style.left="500px";
+        y.style.left="-1000px";
+        x.style.top="220px";
+        z.style.left="0px";
+        }
+    </SCRIPT>
+    </HTML>
